@@ -22,10 +22,10 @@ spring boot rest api for the saturei marketplace (java 17, postgresql)
 
 ### bounded contexts
 * [ ] user bounded context (entity, repository, service) — arthur
-* [ ] listing bounded context (crud, status management) — lucas
-* [ ] image upload handling (storage + size optimization) — lucas
-* [ ] search endpoint (keyword + filters: price, location, category) — lucas
-* [ ] order bounded context (cart, checkout, payment gateway hook) — lucas
+* [x] listing bounded context (crud, status management) — lucas
+* [x] image upload handling (storage + size optimization) — lucas
+* [x] search endpoint (keyword + filters: price, location, category) — lucas
+* [x] order bounded context (cart, checkout, payment gateway hook) — lucas
 * [ ] chat bounded context (websocket with stomp) — joao
 * [ ] review bounded context (post-transaction rating) — arthur
 
