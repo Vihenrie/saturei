@@ -1,9 +1,9 @@
-"use client";
+'use client'
 
-import type { ListingResponse } from "@/lib/api/listings";
-import { MapPin, Tag, Clock, User } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
+import type { ListingResponse } from '@/lib/api/listings'
+import { MapPin, Tag, Clock, User } from 'lucide-react'
+import Image from 'next/image'
+import Link from 'next/link'
 
 // ─── Skeleton ─────────────────────────────────────────────────
 
@@ -24,13 +24,13 @@ export function ListingCardSkeleton() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 // ─── Card ─────────────────────────────────────────────────────
 
 interface ListingCardProps {
-  listing: ListingResponse;
+  listing: ListingResponse
 }
 
 export function ListingCard({ listing }: ListingCardProps) {
@@ -44,15 +44,15 @@ export function ListingCard({ listing }: ListingCardProps) {
     conservationState,
     sellerName,
     createdAt,
-  } = listing;
+  } = listing
 
-  const hasImage = imageUrls && imageUrls.length > 0;
-  const formattedPrice = new Intl.NumberFormat("pt-BR", {
-    style: "currency",
-    currency: "BRL",
-  }).format(price);
+  const hasImage = imageUrls && imageUrls.length > 0
+  const formattedPrice = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+  }).format(price)
 
-  const timeAgo = formatTimeAgo(createdAt);
+  const timeAgo = formatTimeAgo(createdAt)
 
   return (
     <Link
@@ -86,13 +86,14 @@ export function ListingCard({ listing }: ListingCardProps) {
           <span
             className={`
               inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-bold tracking-wide uppercase
-              ${conservationState === "NEW"
-                ? "bg-emerald-100 text-emerald-700 border border-emerald-200"
-                : "bg-amber-100 text-amber-700 border border-amber-200"
+              ${
+                conservationState === 'NEW'
+                  ? 'bg-emerald-100 text-emerald-700 border border-emerald-200'
+                  : 'bg-amber-100 text-amber-700 border border-amber-200'
               }
             `}
           >
-            {conservationState === "NEW" ? "Novo" : "Usado"}
+            {conservationState === 'NEW' ? 'Novo' : 'Usado'}
           </span>
         </div>
 
@@ -143,23 +144,23 @@ export function ListingCard({ listing }: ListingCardProps) {
         </div>
       </div>
     </Link>
-  );
+  )
 }
 
 // ─── Helpers ──────────────────────────────────────────────────
 
 function formatTimeAgo(isoDate: string): string {
-  const diff = Date.now() - new Date(isoDate).getTime();
-  const minutes = Math.floor(diff / 60_000);
-  const hours = Math.floor(diff / 3_600_000);
-  const days = Math.floor(diff / 86_400_000);
+  const diff = Date.now() - new Date(isoDate).getTime()
+  const minutes = Math.floor(diff / 60_000)
+  const hours = Math.floor(diff / 3_600_000)
+  const days = Math.floor(diff / 86_400_000)
 
-  if (minutes < 1) return "agora mesmo";
-  if (minutes < 60) return `${minutes}min atrás`;
-  if (hours < 24) return `${hours}h atrás`;
-  if (days < 7) return `${days}d atrás`;
-  return new Date(isoDate).toLocaleDateString("pt-BR", {
-    day: "2-digit",
-    month: "short",
-  });
+  if (minutes < 1) return 'agora mesmo'
+  if (minutes < 60) return `${minutes}min atrás`
+  if (hours < 24) return `${hours}h atrás`
+  if (days < 7) return `${days}d atrás`
+  return new Date(isoDate).toLocaleDateString('pt-BR', {
+    day: '2-digit',
+    month: 'short',
+  })
 }

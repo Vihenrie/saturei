@@ -1,24 +1,24 @@
-"use client";
+'use client'
 
-import { ChevronDown, MapPin, Tag, X, SlidersHorizontal } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { ChevronDown, MapPin, Tag, X, SlidersHorizontal } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
 
 interface FilterPanelProps {
   // Values
-  category: string | undefined;
-  location: string | undefined;
-  minPrice: number | undefined;
-  maxPrice: number | undefined;
+  category: string | undefined
+  location: string | undefined
+  minPrice: number | undefined
+  maxPrice: number | undefined
   // Options
-  categories: string[];
-  locations: string[];
+  categories: string[]
+  locations: string[]
   // Callbacks
-  onCategoryChange: (v: string) => void;
-  onLocationChange: (v: string) => void;
-  onMinPriceChange: (v: number | undefined) => void;
-  onMaxPriceChange: (v: number | undefined) => void;
-  onClear: () => void;
-  hasActiveFilters: boolean;
+  onCategoryChange: (v: string) => void
+  onLocationChange: (v: string) => void
+  onMinPriceChange: (v: number | undefined) => void
+  onMaxPriceChange: (v: number | undefined) => void
+  onClear: () => void
+  hasActiveFilters: boolean
 }
 
 export function FilterPanel({
@@ -35,16 +35,16 @@ export function FilterPanel({
   onClear,
   hasActiveFilters,
 }: FilterPanelProps) {
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false)
 
   // Close on Escape
   useEffect(() => {
     function handleKey(e: KeyboardEvent) {
-      if (e.key === "Escape") setMobileOpen(false);
+      if (e.key === 'Escape') setMobileOpen(false)
     }
-    document.addEventListener("keydown", handleKey);
-    return () => document.removeEventListener("keydown", handleKey);
-  }, []);
+    document.addEventListener('keydown', handleKey)
+    return () => document.removeEventListener('keydown', handleKey)
+  }, [])
 
   const panelContent = (
     <div className="flex flex-col gap-6">
@@ -52,7 +52,9 @@ export function FilterPanel({
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <SlidersHorizontal size={18} className="text-[var(--primary)]" />
-          <span className="font-semibold text-[var(--foreground)] text-base">Filtros</span>
+          <span className="font-semibold text-[var(--foreground)] text-base">
+            Filtros
+          </span>
           {hasActiveFilters && (
             <span className="inline-flex items-center justify-center w-5 h-5 rounded-full text-[10px] font-bold text-white bg-[var(--primary)]">
               !
@@ -83,7 +85,7 @@ export function FilterPanel({
       >
         <SelectFilter
           id="filter-category"
-          value={category ?? ""}
+          value={category ?? ''}
           onChange={onCategoryChange}
           placeholder="Todas as categorias"
           options={categories}
@@ -97,7 +99,7 @@ export function FilterPanel({
       >
         <SelectFilter
           id="filter-location"
-          value={location ?? ""}
+          value={location ?? ''}
           onChange={onLocationChange}
           placeholder="Todas as localizações"
           options={locations}
@@ -107,7 +109,9 @@ export function FilterPanel({
       {/* Price Range */}
       <FilterSection
         icon={
-          <span className="text-[var(--primary)] font-bold text-sm leading-none">R$</span>
+          <span className="text-[var(--primary)] font-bold text-sm leading-none">
+            R$
+          </span>
         }
         label="Faixa de preço"
       >
@@ -118,7 +122,9 @@ export function FilterPanel({
             value={minPrice}
             onChange={onMinPriceChange}
           />
-          <span className="text-[var(--muted)] text-sm font-medium shrink-0">até</span>
+          <span className="text-[var(--muted)] text-sm font-medium shrink-0">
+            até
+          </span>
           <PriceInput
             id="filter-max-price"
             placeholder="Máximo"
@@ -128,7 +134,7 @@ export function FilterPanel({
         </div>
       </FilterSection>
     </div>
-  );
+  )
 
   return (
     <>
@@ -169,10 +175,12 @@ export function FilterPanel({
               shadow-[0_-8px_40px_rgba(0,0,0,0.18)]
               animate-slide-in
             "
-            style={{ maxHeight: "85vh", overflowY: "auto" }}
+            style={{ maxHeight: '85vh', overflowY: 'auto' }}
           >
             <div className="flex items-center justify-between mb-6">
-              <span className="text-lg font-bold text-[var(--foreground)]">Filtrar resultados</span>
+              <span className="text-lg font-bold text-[var(--foreground)]">
+                Filtrar resultados
+              </span>
               <button
                 onClick={() => setMobileOpen(false)}
                 className="p-2 rounded-xl hover:bg-[var(--muted-bg)] transition-colors"
@@ -209,7 +217,7 @@ export function FilterPanel({
         {panelContent}
       </aside>
     </>
-  );
+  )
 }
 
 // ─── Sub-components ───────────────────────────────────────────
@@ -219,19 +227,21 @@ function FilterSection({
   label,
   children,
 }: {
-  icon: React.ReactNode;
-  label: string;
-  children: React.ReactNode;
+  icon: React.ReactNode
+  label: string
+  children: React.ReactNode
 }) {
   return (
     <div className="flex flex-col gap-3">
       <div className="flex items-center gap-2">
         {icon}
-        <span className="text-sm font-semibold text-[var(--foreground)]">{label}</span>
+        <span className="text-sm font-semibold text-[var(--foreground)]">
+          {label}
+        </span>
       </div>
       {children}
     </div>
-  );
+  )
 }
 
 function SelectFilter({
@@ -241,11 +251,11 @@ function SelectFilter({
   placeholder,
   options,
 }: {
-  id: string;
-  value: string;
-  onChange: (v: string) => void;
-  placeholder: string;
-  options: string[];
+  id: string
+  value: string
+  onChange: (v: string) => void
+  placeholder: string
+  options: string[]
 }) {
   return (
     <div className="relative">
@@ -273,7 +283,7 @@ function SelectFilter({
         className="absolute right-3 top-1/2 -translate-y-1/2 text-[var(--muted)] pointer-events-none"
       />
     </div>
-  );
+  )
 }
 
 function PriceInput({
@@ -282,20 +292,22 @@ function PriceInput({
   value,
   onChange,
 }: {
-  id: string;
-  placeholder: string;
-  value: number | undefined;
-  onChange: (v: number | undefined) => void;
+  id: string
+  placeholder: string
+  value: number | undefined
+  onChange: (v: number | undefined) => void
 }) {
-  const [localValue, setLocalValue] = useState(value != null ? String(value) : "");
+  const [localValue, setLocalValue] = useState(
+    value != null ? String(value) : '',
+  )
 
   useEffect(() => {
-    setLocalValue(value != null ? String(value) : "");
-  }, [value]);
+    setLocalValue(value != null ? String(value) : '')
+  }, [value])
 
   function handleBlur() {
-    const num = parseFloat(localValue);
-    onChange(isNaN(num) || num < 0 ? undefined : num);
+    const num = parseFloat(localValue)
+    onChange(isNaN(num) || num < 0 ? undefined : num)
   }
 
   return (
@@ -323,5 +335,5 @@ function PriceInput({
         "
       />
     </div>
-  );
+  )
 }

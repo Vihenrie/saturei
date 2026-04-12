@@ -1,17 +1,17 @@
-"use client";
+'use client'
 
-import type { ListingResponse, PageResponse } from "@/lib/api/listings";
-import { ListingCard, ListingCardSkeleton } from "./ListingCard";
-import { PackageSearch } from "lucide-react";
+import type { ListingResponse, PageResponse } from '@/lib/api/listings'
+import { ListingCard, ListingCardSkeleton } from './ListingCard'
+import { PackageSearch } from 'lucide-react'
 
 interface ListingGridProps {
-  data: PageResponse<ListingResponse> | undefined;
-  isLoading: boolean;
-  isFetching: boolean;
-  hasActiveFilters: boolean;
+  data: PageResponse<ListingResponse> | undefined
+  isLoading: boolean
+  isFetching: boolean
+  hasActiveFilters: boolean
 }
 
-const SKELETON_COUNT = 12;
+const SKELETON_COUNT = 12
 
 export function ListingGrid({
   data,
@@ -21,7 +21,11 @@ export function ListingGrid({
 }: ListingGridProps) {
   // Full skeleton on first load
   if (isLoading) {
-    return <Grid><SkeletonCards /></Grid>;
+    return (
+      <Grid>
+        <SkeletonCards />
+      </Grid>
+    )
   }
 
   // Empty state
@@ -32,15 +36,17 @@ export function ListingGrid({
           <PackageSearch size={36} className="text-[var(--primary-light)]" />
         </div>
         <h3 className="text-lg font-bold text-[var(--foreground)] mb-2">
-          {hasActiveFilters ? "Nenhum resultado encontrado" : "Nenhum anúncio disponível"}
+          {hasActiveFilters
+            ? 'Nenhum resultado encontrado'
+            : 'Nenhum anúncio disponível'}
         </h3>
         <p className="text-[var(--muted)] text-sm max-w-sm leading-relaxed">
           {hasActiveFilters
-            ? "Tente ajustar ou remover alguns filtros para ver mais resultados."
-            : "Seja o primeiro a publicar um anúncio!"}
+            ? 'Tente ajustar ou remover alguns filtros para ver mais resultados.'
+            : 'Seja o primeiro a publicar um anúncio!'}
         </p>
       </div>
-    );
+    )
   }
 
   return (
@@ -49,9 +55,11 @@ export function ListingGrid({
       <div className="flex items-center gap-3">
         <p className="text-sm text-[var(--muted)]">
           <span className="font-semibold text-[var(--foreground)]">
-            {data.totalElements.toLocaleString("pt-BR")}
-          </span>{" "}
-          {data.totalElements === 1 ? "anúncio encontrado" : "anúncios encontrados"}
+            {data.totalElements.toLocaleString('pt-BR')}
+          </span>{' '}
+          {data.totalElements === 1
+            ? 'anúncio encontrado'
+            : 'anúncios encontrados'}
         </p>
         {isFetching && !isLoading && (
           <div className="flex items-center gap-1.5 text-xs text-[var(--primary)] font-medium">
@@ -74,7 +82,7 @@ export function ListingGrid({
         ))}
       </Grid>
     </div>
-  );
+  )
 }
 
 function Grid({ children }: { children: React.ReactNode }) {
@@ -82,7 +90,7 @@ function Grid({ children }: { children: React.ReactNode }) {
     <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
       {children}
     </div>
-  );
+  )
 }
 
 function SkeletonCards() {
@@ -92,5 +100,5 @@ function SkeletonCards() {
         <ListingCardSkeleton key={i} />
       ))}
     </>
-  );
+  )
 }

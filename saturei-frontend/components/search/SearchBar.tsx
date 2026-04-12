@@ -1,36 +1,36 @@
-"use client";
+'use client'
 
-import { Search, X } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { Search, X } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
 
 interface SearchBarProps {
-  value: string;
-  onChange: (value: string) => void;
-  placeholder?: string;
+  value: string
+  onChange: (value: string) => void
+  placeholder?: string
 }
 
 export function SearchBar({
   value,
   onChange,
-  placeholder = "Buscar anúncios…",
+  placeholder = 'Buscar anúncios…',
 }: SearchBarProps) {
-  const [localValue, setLocalValue] = useState(value);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const [localValue, setLocalValue] = useState(value)
+  const inputRef = useRef<HTMLInputElement>(null)
 
   // Sync from external (e.g. clearFilters)
   useEffect(() => {
-    setLocalValue(value);
-  }, [value]);
+    setLocalValue(value)
+  }, [value])
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setLocalValue(e.target.value);
-    onChange(e.target.value);
+    setLocalValue(e.target.value)
+    onChange(e.target.value)
   }
 
   function handleClear() {
-    setLocalValue("");
-    onChange("");
-    inputRef.current?.focus();
+    setLocalValue('')
+    onChange('')
+    inputRef.current?.focus()
   }
 
   return (
@@ -57,9 +57,11 @@ export function SearchBar({
           transition-all duration-200
           shadow-sm
         "
-        style={{
-          /* Remove browser default search input X button */
-        }}
+        style={
+          {
+            /* Remove browser default search input X button */
+          }
+        }
       />
 
       {/* Clear button */}
@@ -80,5 +82,5 @@ export function SearchBar({
         </button>
       )}
     </div>
-  );
+  )
 }
