@@ -56,7 +56,7 @@ export function ListingCard({ listing }: ListingCardProps) {
 
   return (
     <Link
-      href={`/listings/${id}`}
+      href={`/listing/${id}`}
       id={`listing-card-${id}`}
       className="
         group block bg-white rounded-2xl overflow-hidden
