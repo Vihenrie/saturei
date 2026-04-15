@@ -9,9 +9,9 @@ spring boot rest api for the saturei marketplace (java 17, postgresql)
 * [ ] request/response logging filter — joao
 
 ### database
-* [ ] postgresql datasource and jpa configuration — santana
-* [ ] flyway migrations setup — santana
-* [ ] initial schema migration (users, listings, orders, messages, reviews) — santana
+* [x] postgresql datasource and jpa configuration — santana
+* [x] flyway migrations setup — santana
+* [x] initial schema migration (users, listings, orders, messages, reviews) — santana
 * [ ] seed data for local development — arthur
 
 ### security
@@ -33,16 +33,16 @@ spring boot rest api for the saturei marketplace (java 17, postgresql)
 * [x] listingservice unit tests (crud, status, ownership) — lucas
 * [x] imageservice unit tests (resize, validation, upload) — lucas
 * [x] orderservice unit tests (checkout, cancellation, price locking) — lucas
-* [ ] listingrepository integration tests (search query filters) — santana
+* [x] listingrepository integration tests (search query filters) — santana
 * [ ] userservice unit tests (register, login) — arthur
 * [ ] reviewservice unit tests (create, duplicate prevention) — arthur
 * [ ] jwtservice unit tests (generate, validate, extract) — joao
 * [ ] chatservice unit tests (conversation flow, messaging) — joao
 
 ### infra & devops
-* [ ] dockerfile — santana
-* [ ] docker-compose (app + postgres) — santana
-* [ ] .env.example with required environment variables — santana
+* [x] dockerfile — santana
+* [x] docker-compose (app + postgres) — santana
+* [x] .env.example with required environment variables — santana
 * [x] github actions — ci (build + test on pull request) — lucas
 * [ ] github actions — cd (deploy on push to main) — joao
 * [ ] health check endpoint via actuator — arthur
