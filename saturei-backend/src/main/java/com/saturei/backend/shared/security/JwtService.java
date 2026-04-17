@@ -6,7 +6,7 @@ import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.saturei.backend.user.domain.User;
-import com.saturei.backend.user.domain.UserRepository;
+import com.saturei.backend.user.infrastructure.persistence.JpaUserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -27,7 +27,7 @@ public class JwtService {
     private final static String REFRESH_TOKEN_TYPE = "refresh";
     private final static String ACCESS_TOKEN_TYPE = "access";
     private final JwtProperties jwtProperties;
-    private final UserRepository userRepository;
+    private final JpaUserRepository userRepository;
 
     public String generateToken(UserDetails userDetails) {
         try {
