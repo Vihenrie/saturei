@@ -23,7 +23,7 @@ public interface ListingRepository {
             AND (:location IS NULL OR l.location = :location)
             AND (:minPrice IS NULL OR l.price >= :minPrice)
             AND (:maxPrice IS NULL OR l.price <= :maxPrice)
-            ORDER BY l.createdAt DESC
+            ORDER BY l.createdAt DESC, l.id ASC
             """)
     Page<Listing> search(
             @Param("keyword") String keyword,
