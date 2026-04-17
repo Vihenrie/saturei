@@ -1,14 +1,14 @@
 'use client'
 
 import { useQuery } from '@tanstack/react-query'
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
-  type SearchParams,
   fetchCategories,
   fetchLocations,
+  type SearchParams,
   searchListings,
-} from '@/lib/api/listings';
+} from '@/lib/api/listings'
 
 const DEBOUNCE_MS = 350
 
@@ -66,6 +66,7 @@ export function useListingSearch() {
   }, [filters])
 
   // Push URL whenever debounced filters change
+  // biome-ignore lint/correctness/useExhaustiveDependencies: We only want to trigger on debouncedFilters, intentionally ignoring router and pathname
   useEffect(() => {
     const sp = searchToParams(debouncedFilters)
     router.replace(`${pathname}?${sp.toString()}`, { scroll: false })

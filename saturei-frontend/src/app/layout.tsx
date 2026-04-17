@@ -1,20 +1,15 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono, Space_Grotesk } from 'next/font/google'
+import { Merriweather, Roboto } from 'next/font/google'
 import './globals.css'
 import { Providers } from './providers'
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const merriweatherSerif = Merriweather({
+  variable: '--font-serif',
   subsets: ['latin'],
 })
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-})
-
-const spaceGrotesk = Space_Grotesk({
-  variable: '--font-space-grotesk',
+const robotoSans = Roboto({
+  variable: '--font-sans',
   subsets: ['latin'],
 })
 
@@ -35,7 +30,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} h-full antialiased`}
+      className={`${merriweatherSerif.variable} ${robotoSans.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <Providers>{children}</Providers>

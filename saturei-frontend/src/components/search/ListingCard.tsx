@@ -1,15 +1,15 @@
 'use client'
 
-import type { ListingResponse } from '@/lib/api/listings'
-import { MapPin, Tag, Clock, User } from 'lucide-react'
+import { Clock, MapPin, Tag, User } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import type { ListingResponse } from '@/lib/api/listings'
 
 // ─── Skeleton ─────────────────────────────────────────────────
 
 export function ListingCardSkeleton() {
   return (
-    <div className="bg-white rounded-2xl overflow-hidden border border-[var(--border)] shadow-sm">
+    <div className="bg-white rounded-2xl overflow-hidden border border-border shadow-sm">
       {/* Image */}
       <div className="skeleton h-52 w-full" />
       {/* Body */}

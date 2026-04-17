@@ -1,8 +1,8 @@
 'use client'
 
+import { PackageSearch } from 'lucide-react'
 import type { ListingResponse, PageResponse } from '@/lib/api/listings'
 import { ListingCard, ListingCardSkeleton } from './ListingCard'
-import { PackageSearch } from 'lucide-react'
 
 interface ListingGridProps {
   data: PageResponse<ListingResponse> | undefined
@@ -32,15 +32,15 @@ export function ListingGrid({
   if (!data || data.empty) {
     return (
       <div className="flex flex-col items-center justify-center py-24 px-6 text-center animate-fade-in">
-        <div className="w-20 h-20 rounded-2xl bg-[var(--primary-50)] flex items-center justify-center mb-5 shadow-sm">
-          <PackageSearch size={36} className="text-[var(--primary-light)]" />
+        <div className="w-20 h-20 rounded-2xl bg-(--primary-50) flex items-center justify-center mb-5 shadow-sm">
+          <PackageSearch size={36} className="text-(--primary-light)" />
         </div>
-        <h3 className="text-lg font-bold text-[var(--foreground)] mb-2">
+        <h3 className="text-lg font-bold text-foreground mb-2">
           {hasActiveFilters
             ? 'Nenhum resultado encontrado'
             : 'Nenhum anúncio disponível'}
         </h3>
-        <p className="text-[var(--muted)] text-sm max-w-sm leading-relaxed">
+        <p className="text-muted text-sm max-w-sm leading-relaxed">
           {hasActiveFilters
             ? 'Tente ajustar ou remover alguns filtros para ver mais resultados.'
             : 'Seja o primeiro a publicar um anúncio!'}
@@ -53,8 +53,8 @@ export function ListingGrid({
     <div className="flex flex-col gap-4">
       {/* Result count + fetch indicator */}
       <div className="flex items-center gap-3">
-        <p className="text-sm text-[var(--muted)]">
-          <span className="font-semibold text-[var(--foreground)]">
+        <p className="text-sm text-muted">
+          <span className="font-semibold text-foreground">
             {data.totalElements.toLocaleString('pt-BR')}
           </span>{' '}
           {data.totalElements === 1
@@ -62,8 +62,8 @@ export function ListingGrid({
             : 'anúncios encontrados'}
         </p>
         {isFetching && !isLoading && (
-          <div className="flex items-center gap-1.5 text-xs text-[var(--primary)] font-medium">
-            <span className="w-3 h-3 border-2 border-[var(--primary)] border-t-transparent rounded-full animate-spin" />
+          <div className="flex items-center gap-1.5 text-xs text-primary font-medium">
+            <span className="w-3 h-3 border-2 border-primary border-t-transparent rounded-full animate-spin" />
             Atualizando…
           </div>
         )}
@@ -97,6 +97,7 @@ function SkeletonCards() {
   return (
     <>
       {Array.from({ length: SKELETON_COUNT }).map((_, i) => (
+        // biome-ignore lint/suspicious/noArrayIndexKey: This is a static list of skeletons, not dynamic data
         <ListingCardSkeleton key={i} />
       ))}
     </>

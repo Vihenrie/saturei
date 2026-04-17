@@ -1,12 +1,12 @@
 'use client'
 
+import { Search, Sparkles } from 'lucide-react'
 import { Suspense } from 'react'
-import { useListingSearch } from '@/hooks/useListingSearch'
-import { SearchBar } from '@/components/search/SearchBar'
 import { FilterPanel } from '@/components/search/FilterPanel'
 import { ListingGrid } from '@/components/search/ListingGrid'
 import { Pagination } from '@/components/search/Pagination'
-import { Search, Sparkles } from 'lucide-react'
+import { SearchBar } from '@/components/search/SearchBar'
+import { useListingSearch } from '@/hooks/useListingSearch'
 
 // ─── SearchPageClient needs Suspense boundary because of useSearchParams ──
 
@@ -99,6 +99,7 @@ function SearchPageClient() {
               hasActiveFilters={hasActiveFilters}
             />
             {hasActiveFilters && (
+              // biome-ignore lint/a11y/useButtonType: This is a button semantically, but we intentionally don't want to use a <button> element here because of styling constraints
               <button
                 onClick={clearFilters}
                 className="text-white/70 hover:text-white text-sm transition-colors"
@@ -110,6 +111,7 @@ function SearchPageClient() {
         </div>
 
         {/* Wave divider */}
+        {/** biome-ignore lint/a11y/noSvgWithoutTitle: This is a button semantically, but we intentionally don't want to use a <button> element here because of styling constraints */}
         <svg
           className="relative block w-full"
           viewBox="0 0 1440 32"
@@ -247,13 +249,14 @@ function ActiveFilterChips({
   return (
     <div className="flex flex-wrap gap-2 animate-fade-in">
       {chips.map((c) => (
+        // biome-ignore lint/a11y/useButtonType: This is a button semantically, but we intentionally don't want to use a <button> element here because of styling constraints
         <button
           key={c.label}
           onClick={c.onRemove}
           className="
             flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold
-            bg-[var(--primary-50)] text-[var(--primary)] border border-[var(--primary-100)]
-            hover:bg-[var(--primary)] hover:text-white hover:border-[var(--primary)]
+            bg-primary text-primary border border-primary
+            hover:bg-primary hover:text-white hover:border-primary
             transition-all duration-150
           "
         >
@@ -275,9 +278,10 @@ function SearchPageSkeleton() {
       <div className="h-64 skeleton" />
       <div className="flex-1 max-w-7xl mx-auto w-full px-4 py-8">
         <div className="flex gap-8">
-          <div className="hidden lg:block w-72 h-[500px] skeleton rounded-2xl" />
+          <div className="hidden lg:block w-72 h-125 skeleton rounded-2xl" />
           <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
             {Array.from({ length: 9 }).map((_, i) => (
+              // biome-ignore lint/suspicious/noArrayIndexKey: This is a static list of skeletons, not dynamic data
               <div key={i} className="h-72 skeleton rounded-2xl" />
             ))}
           </div>

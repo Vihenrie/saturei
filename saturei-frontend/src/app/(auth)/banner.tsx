@@ -14,26 +14,24 @@ export function Banner() {
       <div className="w-full flex justify-between items-center">
         <div className="flex items-center gap-2">
           <div className="size-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-            <Sparkles className="size-5 text-secondary" />
+            <Sparkles className="size-5 text-accent" />
           </div>
           <span className="text-white font-semibold tracking-wide">
             Saturei
           </span>
         </div>
-        <span className="text-sm text-white/60">
-          © {new Date().getFullYear()} Saturei
-        </span>
+        <span className="text-sm font-medium text-white/60">© Saturei</span>
       </div>
       <div className="flex flex-col items-center gap-10">
         <div className="flex flex-col items-center gap-3">
-          <span className="text-6xl text-white tracking-tighter font-heading">
-            Deixando memórias,
+          <span className="text-5xl text-white tracking-tighter font-serif">
+            Cada item tem uma história
           </span>
-          <span className="text-5xl text-white tracking-tighter font-heading">
-            Criando histórias
+          <span className="text-4xl text-white tracking-tighter font-serif">
+            aqui ela continua
           </span>
         </div>
-        <div className="w-32 h-1 bg-white/60 rounded-full" />
+        <div className="w-32 h-1 bg-linear-to-br from-primary to-accent rounded-full" />
       </div>
     </div>
   )
