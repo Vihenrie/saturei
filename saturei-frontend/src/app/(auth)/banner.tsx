@@ -13,7 +13,7 @@ export function Banner() {
     >
       <div className="w-full flex justify-between items-center">
         <div className="flex items-center gap-2">
-          <div className="size-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+          <div className="size-10 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center">
             <Sparkles className="size-5 text-accent" />
           </div>
           <span className="text-white font-semibold tracking-wide">

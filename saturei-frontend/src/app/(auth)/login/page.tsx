@@ -1,8 +1,6 @@
-import { Lock, Mail } from 'lucide-react'
 import Link from 'next/link'
+import { LoginForm } from '@/components/auth/login-form'
 import { SocialLogin } from '@/components/auth/social-login'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
 import { Separator } from '@/components/ui/separator'
 
 export default function LoginPage() {
@@ -17,28 +15,7 @@ export default function LoginPage() {
         </div>
         <SocialLogin />
         <Separator />
-        <div className="space-y-4">
-          <div className="relative space-y-0.5">
-            <Mail className="absolute top-3 left-3 size-4 text-accent" />
-            <Input
-              type="text"
-              placeholder="Digite seu email"
-              className="h-10 pl-10"
-            />
-          </div>
-          <div className="relative space-y-0.5">
-            <Lock className="absolute top-3 left-3 size-4 text-accent" />
-            <Input
-              type="password"
-              placeholder="Digite sua senha"
-              className="h-10 pl-10"
-            />
-            <Button variant="ghost" className="absolute right-0 top-0 size-10">
-              <Lock className="size-4" />
-            </Button>
-          </div>
-          <Button className="w-full h-12">Acessar conta</Button>
-        </div>
+        <LoginForm />
         <p className="text-sm text-muted-foreground text-center">
           Ainda não tem uma conta?{' '}
           <Link

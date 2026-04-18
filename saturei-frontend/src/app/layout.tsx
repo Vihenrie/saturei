@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Merriweather, Roboto } from 'next/font/google'
 import './globals.css'
+import { Toaster } from '@/components/ui/sonner'
 import { Providers } from './providers'
 
 const merriweatherSerif = Merriweather({
@@ -34,6 +35,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <Providers>{children}</Providers>
+        <Toaster richColors />
       </body>
     </html>
   )
