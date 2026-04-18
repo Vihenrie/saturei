@@ -36,7 +36,7 @@ export function SearchBar({
   return (
     <div className="relative flex items-center w-full group">
       {/* Search icon */}
-      <div className="absolute left-4 pointer-events-none text-[var(--muted)] group-focus-within:text-[var(--primary)] transition-colors duration-200">
+      <div className="absolute left-4 pointer-events-none text-muted-foreground group-focus-within:text-primary transition-colors duration-200">
         <Search size={20} strokeWidth={2} />
       </div>
 
@@ -50,10 +50,10 @@ export function SearchBar({
         autoComplete="off"
         className="
           w-full h-14 pl-12 pr-12
-          bg-white border-2 border-[var(--border)]
-          rounded-2xl text-[var(--foreground)] text-base font-medium
-          placeholder:text-[var(--muted)] placeholder:font-normal
-          focus:outline-none focus:border-[var(--primary)]
+          bg-card border-2 border-border
+          rounded-2xl text-foreground text-base font-medium
+          placeholder:text-muted-foreground placeholder:font-normal
+          focus:outline-none focus:border-primary
           transition-all duration-200
           shadow-sm
         "
@@ -73,8 +73,8 @@ export function SearchBar({
           className="
             absolute right-4 flex items-center justify-center
             w-7 h-7 rounded-full
-            text-[var(--muted)] hover:text-[var(--foreground)]
-            hover:bg-[var(--muted-bg)]
+            text-muted-foreground hover:text-foreground
+            hover:bg-secondary
             transition-all duration-150
           "
         >

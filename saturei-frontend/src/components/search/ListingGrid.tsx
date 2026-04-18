@@ -32,15 +32,15 @@ export function ListingGrid({
   if (!data || data.empty) {
     return (
       <div className="flex flex-col items-center justify-center py-24 px-6 text-center animate-fade-in">
-        <div className="w-20 h-20 rounded-2xl bg-(--primary-50) flex items-center justify-center mb-5 shadow-sm">
-          <PackageSearch size={36} className="text-(--primary-light)" />
+        <div className="w-20 h-20 rounded-2xl bg-secondary flex items-center justify-center mb-5 shadow-sm">
+          <PackageSearch size={36} className="text-primary" />
         </div>
         <h3 className="text-lg font-bold text-foreground mb-2">
           {hasActiveFilters
             ? 'Nenhum resultado encontrado'
             : 'Nenhum anúncio disponível'}
         </h3>
-        <p className="text-muted text-sm max-w-sm leading-relaxed">
+        <p className="text-muted-foreground text-sm max-w-sm leading-relaxed">
           {hasActiveFilters
             ? 'Tente ajustar ou remover alguns filtros para ver mais resultados.'
             : 'Seja o primeiro a publicar um anúncio!'}
@@ -53,7 +53,7 @@ export function ListingGrid({
     <div className="flex flex-col gap-4">
       {/* Result count + fetch indicator */}
       <div className="flex items-center gap-3">
-        <p className="text-sm text-muted">
+        <p className="text-sm text-muted-foreground">
           <span className="font-semibold text-foreground">
             {data.totalElements.toLocaleString('pt-BR')}
           </span>{' '}

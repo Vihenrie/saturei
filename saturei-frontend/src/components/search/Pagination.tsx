@@ -30,13 +30,13 @@ export function Pagination({
       className="flex flex-col items-center gap-4 py-4"
     >
       {/* Range label */}
-      <p className="text-sm text-[var(--muted)]">
+      <p className="text-sm text-muted-foreground">
         Mostrando{' '}
-        <span className="font-semibold text-[var(--foreground)]">
+        <span className="font-semibold text-foreground">
           {start}–{end}
         </span>{' '}
         de{' '}
-        <span className="font-semibold text-[var(--foreground)]">
+        <span className="font-semibold text-foreground">
           {totalElements.toLocaleString('pt-BR')}
         </span>{' '}
         resultados
@@ -58,8 +58,11 @@ export function Pagination({
         {pages.map((p, idx) =>
           p === '…' ? (
             <span
-              key={`ellipsis-${idx}`}
-              className="w-10 text-center text-[var(--muted)] text-sm select-none"
+              key={`ellipsis-${
+                // biome-ignore lint/suspicious/noArrayIndexKey: This is a static ellipsis, not dynamic data, and we just need a unique key for it. Using the index is acceptable in this case.
+                idx
+              }`}
+              className="w-10 text-center text-muted-foreground text-sm select-none"
             >
               …
             </span>
@@ -117,10 +120,10 @@ function PageButton({
         transition-all duration-150 select-none
         ${
           active
-            ? 'bg-[var(--primary)] text-white shadow-md shadow-purple-200'
+            ? 'bg-primary text-primary-foreground shadow-md'
             : disabled
-              ? 'text-[var(--border)] cursor-not-allowed'
-              : 'text-[var(--foreground)] hover:bg-[var(--primary-50)] hover:text-[var(--primary)]'
+              ? 'text-border cursor-not-allowed'
+              : 'text-foreground hover:bg-secondary hover:text-primary'
         }
       `}
     >

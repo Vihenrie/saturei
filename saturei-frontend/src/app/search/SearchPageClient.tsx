@@ -37,9 +37,9 @@ function SearchPageClient() {
   } = useListingSearch()
 
   return (
-    <div className="flex flex-col min-h-screen bg-[var(--background)]">
+    <div className="flex flex-col min-h-screen bg-background">
       {/* ── Header / Hero ─────────────────────────────── */}
-      <header className="relative overflow-hidden bg-gradient-to-br from-[var(--primary)] via-[#6b21a8] to-[var(--primary-dark)] text-white">
+      <header className="relative overflow-hidden bg-linear-to-br from-primary via-primary to-accent text-primary-foreground">
         {/* Decorative orbs */}
         <div
           className="absolute -top-16 -right-16 w-80 h-80 rounded-full opacity-10"
@@ -57,10 +57,10 @@ function SearchPageClient() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 pb-8">
           {/* Brand row */}
           <div className="flex items-center gap-2 mb-6">
-            <div className="w-8 h-8 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center">
-              <Sparkles size={16} className="text-[var(--secondary)]" />
+            <div className="w-8 h-8 rounded-lg bg-primary-foreground/20 backdrop-blur-sm flex items-center justify-center">
+              <Sparkles size={16} className="text-secondary" />
             </div>
-            <span className="text-white/80 font-semibold text-sm tracking-wide">
+            <span className="text-primary-foreground/80 font-semibold text-sm tracking-wide">
               Saturei Marketplace
             </span>
           </div>
@@ -69,7 +69,7 @@ function SearchPageClient() {
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-2">
             Encontre o que você procura
           </h1>
-          <p className="text-white/70 text-base mb-8">
+          <p className="text-primary-foreground/70 text-base mb-8">
             Explore milhares de anúncios com filtros poderosos
           </p>
 
@@ -102,7 +102,7 @@ function SearchPageClient() {
               // biome-ignore lint/a11y/useButtonType: This is a button semantically, but we intentionally don't want to use a <button> element here because of styling constraints
               <button
                 onClick={clearFilters}
-                className="text-white/70 hover:text-white text-sm transition-colors"
+                className="text-primary-foreground/70 hover:text-primary-foreground text-sm transition-colors"
               >
                 Limpar filtros
               </button>
@@ -121,7 +121,7 @@ function SearchPageClient() {
         >
           <path
             d="M0,16 C360,32 1080,0 1440,16 L1440,32 L0,32 Z"
-            fill="var(--background)"
+            fill="var(--card)"
           />
         </svg>
       </header>
@@ -187,11 +187,11 @@ function SearchPageClient() {
       </main>
 
       {/* ── Footer ────────────────────────────────────── */}
-      <footer className="border-t border-[var(--border)] py-8 mt-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-[var(--muted)]">
+      <footer className="border-t border-border py-8 mt-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-muted-foreground">
           <div className="flex items-center gap-2">
-            <Search size={16} className="text-[var(--primary)]" />
-            <span className="font-semibold text-[var(--primary)]">Saturei</span>
+            <Search size={16} className="text-primary" />
+            <span className="font-semibold text-primary">Saturei</span>
             <span>— Marketplace</span>
           </div>
           <span>
@@ -255,8 +255,8 @@ function ActiveFilterChips({
           onClick={c.onRemove}
           className="
             flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold
-            bg-primary text-primary border border-primary
-            hover:bg-primary hover:text-white hover:border-primary
+            bg-secondary text-foreground border border-secondary
+            hover:bg-primary hover:text-primary-foreground hover:border-primary
             transition-all duration-150
           "
         >
