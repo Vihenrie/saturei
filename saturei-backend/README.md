@@ -36,8 +36,8 @@ spring boot rest api for the saturei marketplace (java 17, postgresql)
 * [x] listingrepository integration tests (search query filters) — santana
 * [ ] userservice unit tests (register, login) — arthur
 * [ ] reviewservice unit tests (create, duplicate prevention) — arthur
-* [ ] jwtservice unit tests (generate, validate, extract) — joao
-* [ ] chatservice unit tests (conversation flow, messaging) — joao
+* [x] jwtservice unit tests (generate, validate, extract) — joao
+* [x] chatservice unit tests (conversation flow, messaging) — joao
 
 ### infra & devops
 * [x] dockerfile — santana
