@@ -9,6 +9,9 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.Payload;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,6 +23,7 @@ import java.util.UUID;
 public class ChatController {
 
     private final ChatService chatService;
+    private final SimpMessagingTemplate messagingTemplate;
 
     @PostMapping("/conversations")
     public ResponseEntity<ConversationResponse> startConversation(@Valid @RequestBody StartConversationRequest request) {
@@ -39,7 +43,23 @@ public class ChatController {
     public ResponseEntity<MessageResponse> sendMessage(@Valid @RequestBody SendMessageRequest request) {
         // TODO: replace hardcoded UUID with authenticated user from SecurityContext
         UUID userId = UUID.randomUUID();
-        return ResponseEntity.status(HttpStatus.CREATED).body(chatService.sendMessage(request, userId));
+        MessageResponse response = chatService.sendMessage(request, userId);
+        
+        // Broadcast the message to all subscribers of the conversation
+        messagingTemplate.convertAndSend("/topic/conversations/" + request.conversationId(), response);
+        
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    @MessageMapping("/chat.sendMessage")
+    public void sendMessageWebSocket(@Payload @Valid SendMessageRequest request) {
+        // TODO: extract user ID from STOMP Principal header (using UUID for now to match REST)
+        UUID userId = UUID.randomUUID();
+        
+        MessageResponse response = chatService.sendMessage(request, userId);
+        
+        // Broadcast the message to all subscribers of the conversation
+        messagingTemplate.convertAndSend("/topic/conversations/" + request.conversationId(), response);
     }
 
     @GetMapping("/conversations/{conversationId}/messages")
