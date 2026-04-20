@@ -26,7 +26,7 @@ spring boot rest api for the saturei marketplace (java 17, postgresql)
 * [x] image upload handling (storage + size optimization) — lucas
 * [x] search endpoint (keyword + filters: price, location, category) — lucas
 * [x] order bounded context (cart, checkout, payment gateway hook) — lucas
-* [ ] chat bounded context (websocket with stomp) — joao
+* [x] chat bounded context (websocket with stomp) — joao
 * [ ] review bounded context (post-transaction rating) — arthur
 
 ### tests

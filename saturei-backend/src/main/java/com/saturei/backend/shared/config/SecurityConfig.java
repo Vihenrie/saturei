@@ -30,6 +30,7 @@ public class SecurityConfig {
                         // Public endpoints
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers("/actuator/health").permitAll()
+                        .requestMatchers("/ws/**").permitAll() // WebSocket endpoint
                         // Public search: GET /listings, GET /listings/{id}, GET /listings/meta
                         .requestMatchers(HttpMethod.GET, "/listings", "/listings/**").permitAll()
                         // Everything else requires authentication
