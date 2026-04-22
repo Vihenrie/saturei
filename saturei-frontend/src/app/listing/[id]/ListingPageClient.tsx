@@ -1,7 +1,6 @@
 'use client'
 
 import type { ListingResponse } from '@/lib/api/listings'
-import { useMemo } from 'react'
 import { ListingGallery } from '@/components/listing/ListingGallery'
 import { ListingInfo } from '@/components/listing/ListingInfo'
 import { SellerInfo } from '@/components/listing/SellerInfo'
@@ -12,11 +11,6 @@ export function ListingPageClient({ listing }: { listing: ListingResponse }) {
   const quantityInCart = useCartStore(
     (s) => s.items.find((it) => it.id === listing.id)?.quantity ?? 0,
   )
-
-  const sellerRating = useMemo(() => {
-    const raw = (listing as unknown as { sellerRating?: number }).sellerRating
-    return typeof raw === 'number' ? raw : undefined
-  }, [listing])
 
   return (
     <div className="flex-1 bg-[var(--background)]">
@@ -73,7 +67,7 @@ export function ListingPageClient({ listing }: { listing: ListingResponse }) {
               </button>
             </div>
 
-            <SellerInfo name={listing.sellerName} rating={sellerRating} />
+            <SellerInfo name={listing.sellerName} rating={listing.sellerRating} />
           </aside>
         </div>
       </main>

@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useMemo } from 'react'
+import { formatBRL } from '@/lib/formatters/currency'
 import { useCartStore } from '@/stores/cart'
 
 export function OrderSummary() {
@@ -64,11 +65,4 @@ export function OrderSummary() {
       </div>
     </div>
   )
-}
-
-function formatBRL(value: number) {
-  return new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
-  }).format(value)
 }

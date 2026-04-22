@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Minus, Plus, ShoppingCart, Trash2 } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react'
+import { formatBRL } from '@/lib/formatters/currency'
 import { useCartStore } from '@/stores/cart'
 
 export function CartPageClient() {
@@ -239,11 +240,4 @@ function QuantityControl({
       </button>
     </div>
   )
-}
-
-function formatBRL(value: number) {
-  return new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
-  }).format(value)
 }
