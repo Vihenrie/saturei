@@ -127,15 +127,17 @@ function Field({
 }) {
   return (
     <div className="flex flex-col gap-2">
-      <div className="flex items-baseline justify-between gap-3">
-        <label className="text-sm font-bold text-[var(--foreground)]">
-          {label}
-        </label>
-        {error && (
-          <span className="text-xs font-semibold text-red-600">{error}</span>
-        )}
-      </div>
-      {children}
+      <label className="flex flex-col gap-2">
+        <span className="flex items-baseline justify-between gap-3">
+          <span className="text-sm font-bold text-[var(--foreground)]">
+            {label}
+          </span>
+          {error && (
+            <span className="text-xs font-semibold text-red-600">{error}</span>
+          )}
+        </span>
+        {children}
+      </label>
     </div>
   )
 }
