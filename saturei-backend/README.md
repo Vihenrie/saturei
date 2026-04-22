@@ -15,10 +15,10 @@ spring boot rest api for the saturei marketplace (java 17, postgresql)
 * [ ] seed data for local development — arthur
 
 ### security
-* [ ] jwt authentication (filter, provider, token generation) — joao
+* [x] jwt authentication (filter, provider, token generation) — joao
 * [ ] spring security configuration (cors, csrf, protected routes) — joao
 * [ ] password encryption (bcrypt) — arthur
-* [ ] refresh token support — joao
+* [x] refresh token support — joao
 
 ### bounded contexts
 * [ ] user bounded context (entity, repository, service) — arthur
@@ -26,7 +26,7 @@ spring boot rest api for the saturei marketplace (java 17, postgresql)
 * [x] image upload handling (storage + size optimization) — lucas
 * [x] search endpoint (keyword + filters: price, location, category) — lucas
 * [x] order bounded context (cart, checkout, payment gateway hook) — lucas
-* [ ] chat bounded context (websocket with stomp) — joao
+* [x] chat bounded context (websocket with stomp) — joao
 * [ ] review bounded context (post-transaction rating) — arthur
 
 ### tests
@@ -36,8 +36,8 @@ spring boot rest api for the saturei marketplace (java 17, postgresql)
 * [x] listingrepository integration tests (search query filters) — santana
 * [ ] userservice unit tests (register, login) — arthur
 * [ ] reviewservice unit tests (create, duplicate prevention) — arthur
-* [ ] jwtservice unit tests (generate, validate, extract) — joao
-* [ ] chatservice unit tests (conversation flow, messaging) — joao
+* [x] jwtservice unit tests (generate, validate, extract) — joao
+* [x] chatservice unit tests (conversation flow, messaging) — joao
 
 ### infra & devops
 * [x] dockerfile — santana
