@@ -56,7 +56,7 @@ export async function loginWithGoogleAction() {
   googleLoginUrl.searchParams.set('client_id', env.GOOGLE_CLIENT_ID)
   googleLoginUrl.searchParams.set(
     'redirect_uri',
-    `${env.NEXT_PUBLIC_WEB_BASE_URL}/auth/callback/google`,
+    `${env.NEXT_PUBLIC_WEB_BASE_URL}/api/auth/callback/google`,
   )
   googleLoginUrl.searchParams.set('scope', 'openid email profile')
   googleLoginUrl.searchParams.set('response_type', 'code')
@@ -71,7 +71,7 @@ export async function loginWithGithubAction() {
   githubLoginUrl.searchParams.set('client_id', env.GITHUB_CLIENT_ID)
   githubLoginUrl.searchParams.set(
     'redirect_uri',
-    `${env.NEXT_PUBLIC_WEB_BASE_URL}/auth/callback/github`,
+    `${env.NEXT_PUBLIC_WEB_BASE_URL}/api/auth/callback/github`,
   )
   githubLoginUrl.searchParams.set('scope', 'user:email')
 
